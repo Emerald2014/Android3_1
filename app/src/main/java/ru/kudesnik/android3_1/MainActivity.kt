@@ -21,7 +21,7 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-        presenter = LoginPresenter()
+        presenter = initPresenter()
         presenter?.onAttach(this)
 
         binding.loginButton.setOnClickListener {
@@ -30,6 +30,15 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
                 binding.passwordEditText.text.toString()
             )
         }
+    }
+
+    private fun initPresenter(): LoginPresenter {
+        val presenter = lastCustomNonConfigurationInstance as? LoginPresenter
+        return presenter ?: LoginPresenter()
+    }
+
+    override fun onRetainCustomNonConfigurationInstance(): Any? {
+        return presenter
     }
 
     override fun setSuccess() {
@@ -51,10 +60,6 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
     override fun hideProgress() {
         binding.loginButton.isEnabled = true
         hideKeyboard(this)
-    }
-
-    override fun getHandler(): Handler {
-        return Handler(Looper.getMainLooper())
     }
 
     private fun hideKeyboard(activity: Activity) {

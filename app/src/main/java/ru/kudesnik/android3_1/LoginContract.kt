@@ -9,7 +9,6 @@ class LoginContract {
         fun setError(error: String)
         fun showProgress()
         fun hideProgress()
-        fun getHandler() :Handler
     }
 
     interface Presenter {
