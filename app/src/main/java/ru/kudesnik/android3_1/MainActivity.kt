@@ -3,8 +3,6 @@ package ru.kudesnik.android3_1
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
@@ -23,12 +21,27 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
         setContentView(binding.root)
         presenter = initPresenter()
         presenter?.onAttach(this)
-
-        binding.loginButton.setOnClickListener {
-            presenter?.onLogin(
-                binding.loginEditText.text.toString(),
-                binding.passwordEditText.text.toString()
-            )
+        with(binding) {
+            btnSignIn.setOnClickListener {
+                presenter?.onLogin(
+                    loginEditText.text.toString(),
+                    passwordEditText.text.toString()
+                )
+            }
+            btnSignUp.setOnClickListener {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Переходим во фрагмент Регистрация",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+            btnForgotPassword.setOnClickListener {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Переходим во фрагмент Напомнить пароль",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
@@ -42,11 +55,12 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun setSuccess() {
-        binding.loginButton.isVisible = false
+        binding.btnSignIn.isVisible = false
         binding.loginEditText.isVisible = false
         binding.passwordEditText.isVisible = false
+        binding.btnForgotPassword.isVisible = false
+        binding.btnSignUp.isVisible = false
         binding.root.setBackgroundColor(Color.GREEN)
-
     }
 
     override fun setError(error: String) {
@@ -54,11 +68,11 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun showProgress() {
-        binding.loginButton.isEnabled = false
+        binding.btnSignIn.isEnabled = false
     }
 
     override fun hideProgress() {
-        binding.loginButton.isEnabled = true
+        binding.btnSignIn.isEnabled = true
         hideKeyboard(this)
     }
 
@@ -72,5 +86,16 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
             view = View(activity)
         }
         imm.hideSoftInputFromWindow(view.windowToken, 0)
+    }
+
+    override fun onBackPressed() {
+        if (!binding.loginEditText.isVisible) {
+            binding.btnSignIn.isVisible = true
+            binding.loginEditText.isVisible = true
+            binding.passwordEditText.isVisible = true
+            binding.btnForgotPassword.isVisible = true
+            binding.btnSignUp.isVisible = true
+            binding.root.setBackgroundColor(0)
+        } else super.onBackPressed()
     }
 }

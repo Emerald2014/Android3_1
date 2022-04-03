@@ -1,7 +1,5 @@
 package ru.kudesnik.android3_1
 
-import android.os.Handler
-
 class LoginContract {
 
     interface View {

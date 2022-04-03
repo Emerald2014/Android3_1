@@ -17,7 +17,7 @@ class LoginPresenter : LoginContract.Presenter {
         if (currentResult) {
             view.setSuccess()
         } else {
-            view.setError(errorText)
+//            view.setError(errorText)
         }
     }
 
@@ -35,10 +35,8 @@ class LoginPresenter : LoginContract.Presenter {
                     view?.setError(errorPassword)
                     currentResult = false
                     errorText = errorPassword
-
                 }
             }
-
         }.start()
     }
 
@@ -50,4 +48,6 @@ class LoginPresenter : LoginContract.Presenter {
     override fun onCredentialsChanged() {
         TODO("Not yet implemented")
     }
+
+
 }
