@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Android3_1</string>
+    <string name="forgot_password">Забыли пароль</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="sign_in">Войти</string>
+    <string name="edit_text_password">Введите пароль</string>
+    <string name="edit_text_login">Введите логин</string>
+    <string name="login_description">Логин</string>
+    <string name="password_description">Пароль</string>
 </resources>
