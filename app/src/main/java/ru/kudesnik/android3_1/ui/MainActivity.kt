@@ -30,20 +30,20 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
         presenter = initPresenter()
         presenter?.onAttach(this)
         with(binding) {
-            btnSignIn.setOnClickListener {
+            signInButton.setOnClickListener {
                 presenter?.onLogin(
                     loginEditText.text.toString(),
                     passwordEditText.text.toString()
                 )
             }
-            btnSignUp.setOnClickListener {
+            signUpButton.setOnClickListener {
                 Toast.makeText(
                     this@MainActivity,
                     "Переходим во фрагмент Регистрация",
                     Toast.LENGTH_SHORT
                 ).show()
             }
-            btnForgotPassword.setOnClickListener {
+            forgotPasswordButton.setOnClickListener {
                 Toast.makeText(
                     this@MainActivity,
                     "Переходим во фрагмент Напомнить пароль",
@@ -63,11 +63,11 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun setSuccess() {
-        binding.btnSignIn.isVisible = false
+        binding.signInButton.isVisible = false
         binding.loginEditText.isVisible = false
         binding.passwordEditText.isVisible = false
-        binding.btnForgotPassword.isVisible = false
-        binding.btnSignUp.isVisible = false
+        binding.forgotPasswordButton.isVisible = false
+        binding.signUpButton.isVisible = false
         binding.root.setBackgroundColor(Color.GREEN)
     }
 
@@ -76,11 +76,11 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun showProgress() {
-        binding.btnSignIn.isEnabled = false
+        binding.signInButton.isEnabled = false
     }
 
     override fun hideProgress() {
-        binding.btnSignIn.isEnabled = true
+        binding.signInButton.isEnabled = true
         hideKeyboard(this)
     }
 
@@ -98,11 +98,11 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
 
     override fun onBackPressed() {
         if (!binding.loginEditText.isVisible) {
-            binding.btnSignIn.isVisible = true
+            binding.signInButton.isVisible = true
             binding.loginEditText.isVisible = true
             binding.passwordEditText.isVisible = true
-            binding.btnForgotPassword.isVisible = true
-            binding.btnSignUp.isVisible = true
+            binding.forgotPasswordButton.isVisible = true
+            binding.signUpButton.isVisible = true
             binding.root.setBackgroundColor(0)
         } else super.onBackPressed()
     }
