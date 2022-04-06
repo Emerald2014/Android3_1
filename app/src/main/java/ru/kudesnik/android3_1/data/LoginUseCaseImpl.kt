@@ -10,7 +10,6 @@ class LoginUseCaseImpl(private val api: LoginApi, private val uiHandler: Handler
             val result = api.login(login, password)
             uiHandler.post {
                 callback(result)
-
             }
         }.start()
     }

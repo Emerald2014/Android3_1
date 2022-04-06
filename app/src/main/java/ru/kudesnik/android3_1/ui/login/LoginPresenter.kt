@@ -3,6 +3,7 @@ package ru.kudesnik.android3_1.ui.login
 import android.annotation.SuppressLint
 import android.os.Handler
 import android.os.Looper
+import android.widget.Toast
 import ru.kudesnik.android3_1.domain.LoginApi
 import ru.kudesnik.android3_1.data.MockLoginApiImpl
 import ru.kudesnik.android3_1.domain.LoginUseCase
@@ -39,17 +40,13 @@ class LoginPresenter(private val loginUseCase: LoginUseCase) : LoginContract.Pre
                 errorText = errorPassword
             }
         }
-
     }
 
     private fun checkCredentials(login: String, password: String): Boolean {
         return login == password
-
     }
 
     override fun onCredentialsChanged() {
         TODO("Not yet implemented")
     }
-
-
 }

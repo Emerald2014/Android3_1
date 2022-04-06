@@ -50,6 +50,13 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
                     Toast.LENGTH_SHORT
                 ).show()
             }
+            settingsFab.setOnClickListener {
+                Toast.makeText(
+                    this@MainActivity,
+                    "Переходим во фрагмент Настройки",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
         }
     }
 
