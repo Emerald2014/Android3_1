@@ -1,4 +1,4 @@
-package ru.kudesnik.android3_1
+package ru.kudesnik.android3_1.ui.login
 
 class LoginContract {
 

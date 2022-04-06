@@ -1,11 +1,13 @@
-package ru.kudesnik.android3_1
+package ru.kudesnik.android3_1.ui.login
 
 import android.os.Handler
 import android.os.Looper
+import ru.kudesnik.android3_1.domain.LoginApi
+import ru.kudesnik.android3_1.data.MockLoginApiImpl
 import java.lang.Thread.sleep
 
 
-class LoginPresenter : LoginContract.Presenter {
+class LoginPresenter(private val api: LoginApi) : LoginContract.Presenter {
     private var view: LoginContract.View? = null
     private val uiHandler = Handler(Looper.getMainLooper())
     private var currentResult: Boolean = false
@@ -16,18 +18,16 @@ class LoginPresenter : LoginContract.Presenter {
         this.view = view
         if (currentResult) {
             view.setSuccess()
-        } else {
-//            view.setError(errorText)
         }
     }
 
     override fun onLogin(login: String, password: String) {
         view?.showProgress()
         Thread {
-            sleep(2000)
+            val success = api.login(login, password)
             uiHandler.post {
                 view?.hideProgress()
-                if (checkCredentials(login, password)) {
+                if (success) {
                     view?.setSuccess()
                     currentResult = true
                     errorText = ""

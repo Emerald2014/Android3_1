@@ -1,4 +1,4 @@
-package ru.kudesnik.android3_1
+package ru.kudesnik.android3_1.ui
 
 import android.app.Activity
 import android.graphics.Color
@@ -8,7 +8,11 @@ import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import ru.kudesnik.android3_1.App
+import ru.kudesnik.android3_1.app
 import ru.kudesnik.android3_1.databinding.ActivityMainBinding
+import ru.kudesnik.android3_1.ui.login.LoginContract
+import ru.kudesnik.android3_1.ui.login.LoginPresenter
 
 
 class MainActivity : AppCompatActivity(), LoginContract.View {
@@ -47,7 +51,8 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
 
     private fun initPresenter(): LoginPresenter {
         val presenter = lastCustomNonConfigurationInstance as? LoginPresenter
-        return presenter ?: LoginPresenter()
+       val api =  (application as App).api
+        return presenter ?: LoginPresenter(app.api)
     }
 
     override fun onRetainCustomNonConfigurationInstance(): Any? {
