@@ -3,18 +3,13 @@ package ru.kudesnik.android3_1.ui
 import android.app.Activity
 import android.graphics.Color
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
-import ru.kudesnik.android3_1.App
 import ru.kudesnik.android3_1.app
-import ru.kudesnik.android3_1.data.LoginUseCaseImpl
 import ru.kudesnik.android3_1.databinding.ActivityMainBinding
-import ru.kudesnik.android3_1.domain.LoginUseCase
 import ru.kudesnik.android3_1.ui.login.LoginContract
 import ru.kudesnik.android3_1.ui.login.LoginPresenter
 
