@@ -21,5 +21,5 @@ class App : Application() {
 
 val Context.app: App
     get() {
-        return applicationContext.app
+        return applicationContext as App
     }

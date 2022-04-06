@@ -71,8 +71,8 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
 
     override fun setSuccess() {
         binding.signInButton.isVisible = false
-        binding.loginEditText.isVisible = false
-        binding.passwordEditText.isVisible = false
+        binding.loginEditTextLayout.isVisible = false
+        binding.passwordEditTextLayout.isVisible = false
         binding.forgotPasswordButton.isVisible = false
         binding.signUpButton.isVisible = false
         binding.root.setBackgroundColor(Color.GREEN)
@@ -104,10 +104,10 @@ class MainActivity : AppCompatActivity(), LoginContract.View {
     }
 
     override fun onBackPressed() {
-        if (!binding.loginEditText.isVisible) {
+        if (!binding.loginEditTextLayout.isVisible) {
             binding.signInButton.isVisible = true
-            binding.loginEditText.isVisible = true
-            binding.passwordEditText.isVisible = true
+            binding.loginEditTextLayout.isVisible = true
+            binding.passwordEditTextLayout.isVisible = true
             binding.forgotPasswordButton.isVisible = true
             binding.signUpButton.isVisible = true
             binding.root.setBackgroundColor(0)
