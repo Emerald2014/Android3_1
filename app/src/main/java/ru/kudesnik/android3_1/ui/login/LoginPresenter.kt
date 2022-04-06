@@ -23,6 +23,8 @@ class LoginPresenter(private val api: LoginApi) : LoginContract.Presenter {
 
     override fun onLogin(login: String, password: String) {
         view?.showProgress()
+
+        loginUsecase.login(login, password, /* { ... } */)
         Thread {
             val success = api.login(login, password)
             uiHandler.post {
