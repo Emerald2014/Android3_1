@@ -24,8 +24,5 @@ class LoginContract {
 
         @MainThread
         fun onLogin(login: String, password: String)
-
-        @MainThread
-        fun onCredentialsChanged()
     }
 }

@@ -41,12 +41,4 @@ class LoginPresenter(private val loginUseCase: LoginUseCase) : LoginContract.Pre
             }
         }
     }
-
-    private fun checkCredentials(login: String, password: String): Boolean {
-        return login == password
-    }
-
-    override fun onCredentialsChanged() {
-        TODO("Not yet implemented")
-    }
 }
